@@ -18,7 +18,8 @@ fn generate_mod_rs_recursively(dir: &Path) -> Result<()> {
 
     for entry in entries.iter() {
         let path = entry.path();
-        let file_name = entry.file_name().to_string_lossy();
+        let file_name_owned = entry.file_name().to_string_lossy().to_string();
+        let file_name = file_name_owned.as_str();
 
         if file_name == "mod.rs" {
             continue;
